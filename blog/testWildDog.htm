@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>野狗数据操作测试</title>
+<script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+<script src = "https://cdn.wilddog.com/js/client/current/wilddog.js" ></script>
+</head>
+<body>
+	<div id="result"></div>
+
+
+		<script type="text/javascript">
+
+
+
+		//返回多条记录
+// var ref = new Wilddog("https://dinosaur-facts.wilddogio.com/scores");
+// scoresRef.orderByValue().limitToLast(3).on("value", function(snapshot) {
+//   snapshot.forEach(function(data) {
+//     console.log("The " + data.key() + " dinosaur's score is " + data.val());
+//   });
+// });
+
+
+		$(document).ready(function(){
+		var tmpString ="";
+
+		var ref = new Wilddog("https://aladdin.wilddogio.com/users/0");
+
+		ref.child("username").on("value", function(datasnapshot,error) {
+		    if (error == null) {
+		        tmpString +=  "1、数据读取：<br>"+datasnapshot.key()+" : "+datasnapshot.val();
+		    }
+		});
+		
+		tmpString += "<br>2、数据读取并带错误处理：<br>";
+		//ref = new Wilddog("https://aladdin.wilddogio.com/users/3");
+		ref.on("value", function(snapshot) {
+		    tmpString += snapshot.val().username;
+		}, function (errorObject) {
+		    tmpString += "错误代码: " + errorObject.code;
+		});
+
+
+
+
+			$("#result").html(tmpString);
+		});
+	</script>
+
+</body>
+</html>

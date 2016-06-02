@@ -1,0 +1,89 @@
+* {margin:0;padding:0;}
+body {background:#f0f0f0;color:#333;font:9pt/18px Consolas,verdana,宋体;}
+img {border: none;vertical-align:middle;}
+ul {list-style-type:none;}
+li {float:left;}
+table {border:1px solid #777;}
+a {color:#1D5689;text-decoration:none;}
+a:hover {color:#669900;text-decoration:underline;}
+
+#header {height:90px;background:#30363B url(../images/bg.png) repeat-x;}
+#header_center {width:850px;margin:0 auto;}
+#header_center li a{float:left;display:block;color:#333;font:9pt/26px tahoma,微软雅黑,宋体;width:80px;height:26px;text-align:center;margin:32px 15px 0 0;-moz-border-radius:4px;-webkit-border-radius:4px;border-radius:4px;
+background:#E4E4E4;background:-moz-linear-gradient(top, #F1F1F1, #ddd);background:-webkit-gradient(linear, 0 0, 0 100%, from(#F1F1F1), to(#ddd));
+}
+#header_center li a:hover {text-decoration:none;background:#79AD37;background:-moz-linear-gradient(top, #9FCE60, #6D9D32);background: -webkit-gradient(linear, 0 0, 0 100%, from(#9FCE60), to(#6D9D32));color:#fff;}
+
+#logo {float:left;width:500px;}
+#logo a {font:20px/90px 微软雅黑;text-indent:-9999px;display:block;float:left;width:280px;height:90px;background:url(../images/logo2.png) no-repeat center;}
+#logo i {float:left;font:20px/90px "Segoe Script","Brush Script MT";color:#bbb;}
+#line {height:20px;background:#F0F0F0 url(../images/gradient.png) no-repeat;margin-bottom:10px;}
+#box {margin:0 auto;width:948px;}
+#boxx {background: url(../images/repeat-y.png) center repeat-y;min-height:300px;}
+#box-bottom {background:url(../images/corner.png) no-repeat top;height:43px;}
+#box-top {background:url(../images/corner.png) no-repeat 0 -43px;height:43px;}
+
+#left {float:left;margin-left:45px;width:625px;min-height:600px;border-right:1px dashed #aaa;}
+#right {float:left;width:230px;min-height:600px;}
+
+.post {border-bottom:1px dashed #aaa;margin-bottom:15px;padding:0 15px 15px 0;}
+h2.title {font:22px/32px tahoma,微软雅黑,宋体;}
+.entry {font:14px/25px Consolas,tahoma,宋体;background: #fff;border-left: 2px solid #ddd;margin:10px;padding: 0 10px;}
+.entry p { margin:0.8em 0;white-space: pre-wrap;       /* css-3 */  
+white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */  
+white-space: -pre-wrap;      /* Opera 4-6 */  
+white-space: -o-pre-wrap;    /* Opera 7 */  
+word-wrap: break-word;       /* Internet Explorer 5.5+ */ 
+word-break: break-all;
+}
+.entry pre {word-break:break-all;white-space:pre-wrap;}
+.page {width:500px;margin:30px auto;text-align:center;}
+.page span, .page a,.page .nextpage, .page .prepage {font:13px/1.5 微软雅黑,宋体;display:inline;text-decoration:none;background:#E4E4E4;
+background:-moz-linear-gradient(top, #F1F1F1, #ddd);
+background:-webkit-gradient(linear, 0 0, 0 100%, from(#F1F1F1), to(#ddd));color: #333;padding:4px 9px 3px;margin:0 5px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}
+.page a:hover {background:#79AD37;background:-moz-linear-gradient(top, #9FCE60, #6D9D32);
+background: -webkit-gradient(linear, 0 0, 0 100%, from(#9FCE60), to(#6D9D32));color: #f7f7f7;}
+.page .current {background:#79AD37;background:-moz-linear-gradient(top, #9FCE60, #6D9D32);
+background: -webkit-gradient(linear, 0 0, 0 100%, from(#9FCE60), to(#6D9D32));color: #f7f7f7;}
+.page .nextpage, .page .prepage {width:70px;}
+
+#category {margin:0 0 0 30px;width:200px;min-height:203px;}
+#category li a {float:left;display:block;color:#333;height:36px;font:16px/36px tahoma,微软雅黑,宋体;width:96px;margin:4px 2px 0 2px;text-align:center;}
+#category li a:hover {text-decoration:none;color:#fff;background:#79AD37;background:-moz-linear-gradient(top, #9FCE60, #6D9D32);background: -webkit-gradient(linear, 0 0, 0 100%, from(#9FCE60), to(#6D9D32));-moz-border-radius:4px;-webkit-border-radius:4px;border-radius:4px;}
+.currCat {text-decoration:none;background:#E4E4E4;background:-moz-linear-gradient(top, #eee, #bbb);background:-webkit-gradient(linear, 0 0, 0 100%, from(#eee), to(#bbb));-moz-border-radius:4px;-webkit-border-radius:4px;border-radius:4px;}
+#category li b, #newComments li b ,#tagClouds b{float:left;display:block;color:#333;height:40px;font:normal 22px/40px tahoma,微软雅黑,宋体;width:200px;text-align:center;border-bottom:3px solid #2F4658;}
+
+#newComments,#tagClouds {margin:20px 0 0 30px;width:200px;min-height:200px;overflow:hidden;_overflow:visible;}
+#newComments li {font:14px/25px tahoma,宋体;border-bottom:1px dashed #aaa;padding:7px;}
+#newComments li:first-child {border-bottom:0;}
+#newComments li i {font-size:9pt;font-style:normal;}
+
+#tagClouds {word-wrap:break-word;}
+#tagClouds a {font-family:tahoma,微软雅黑,宋体;text-decoration:none;white-space:nowrap;display:inline-block;}
+
+#comments li {font:11pt/25px Consolas,tahoma,宋体;background: #fff;border-left: 2px solid #ddd;margin:0 10px 20px 10px;padding: 0px 10px;white-space: pre-wrap; word-wrap:break-word;overflow:hidden}
+#comments i {font-size:9pt;font-style:normal;}
+
+#commContent {margin:0 0 0 10px;padding: 9px;font:11pt/25px Consolas,tahoma,宋体;border: solid 1px #ddd;outline: 0;width: 565px;height:120px;box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;-moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;-webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 5px;-moz-border-radius:4px;-webkit-border-radius:4px;border-radius:4px;}
+#commContent:hover, #commContent:focus { border-color: #C9C9C9; -moz-box-shadow: inset 0 2px 5px rgba(0,0,0,.4); -webkit-box-shadow: inset 0 2px 5px rgba(0,0,0,.4);box-shadow: inset 0 2px 5px rgba(0,0,0,.24);}
+#send {margin:8px 0 0 10px;width:90px;height:32px;cursor: pointer;border: 0;background:#79AD37;background:-moz-linear-gradient(top, #9FCE60, #6D9D32);background: -webkit-gradient(linear, 0 0, 0 100%, from(#9FCE60), to(#6D9D32));color:#fff;-moz-border-radius:4px;-webkit-border-radius:4px;border-radius:4px;}
+
+#ad200 {margin:20px 0 0 30px;width:200px;}
+#ad600 {margin:20px 0 0 50px;width:160px;}
+#post_title {width:96%;padding:0 10px;height:36px;font:18px/30px tahoma,'微软雅黑';-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;border:1px solid #ddd;}
+.copyright {font-family:"Courier New";line-height:22px;margin:0 auto;width:850px;height:100px;color:#888;margin-top:30px;text-align:center;}
+.copyright a {color:#666;}
+.copyright b {color:#ff0000;font-weight:normal;}
+.none {display:none;}
+
+#returntop{
+	background:url(../images/return.png);
+	width:40px;
+	height:40px;
+	position:fixed;
+	_position:absolute;
+	top:0px;
+	left:0px;
+	display:none;
+	cursor:pointer;
+}
