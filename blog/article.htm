@@ -97,6 +97,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 	    	$(".title").html("<a href=\"http://yangxiaoxi.com/blog/\">"+d.title+"</a>");
 	    	$(".entry").html(datasnapshot.val().content);
 	    	$(".postdata").html("发表于"+d.post_date+"，共被点击"+d.views+"次，共有<a href=\"http://\"><span id=\"cc\">"+d.comments+"</span>个评论</a>。<br/>固定链接：http://yangxiaoxi.com/blog/【链接】<br />关键词：【关键词】</div>");
+		ref.set({"views":parseInt(d.views)+1});
 	    }else{
 	    	alert(error.code);
 	    }
