@@ -82,13 +82,13 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 
 <script type="text/javascript">
 	var ref = new Wilddog("https://lintex.wilddogio.com/blog/posts/1");
-	ref.once("value", function(datasnapshot,error) {
+	ref.on("value", function(datasnapshot,error) {
 	    if (error == null) {
+	    	ref.update({"views":parseInt(d.views)+1});
 	    	var d = datasnapshot.val();
 	    	$(".title").html("<a href=\"http://yangxiaoxi.com/blog/\">"+d.title+"</a>");
 	    	$(".entry").html(datasnapshot.val().content);
 	    	$(".postdata").html("发表于"+d.post_date+"，共被点击"+d.views+"次，共有<a href=\"http://\"><span id=\"cc\">"+d.comments+"</span>个评论</a>。<br/>固定链接：http://yangxiaoxi.com/blog/【链接】<br />关键词：【关键词】</div>");
-		ref.update({"views":parseInt(d.views)+1});
 		$("title").text(d.title + " - 无辜的微笑");
 	    }else{
 	    	alert(error.code);
