@@ -95,8 +95,8 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 	    }
 	});
 	
-	ref = new Wilddog("https://lintex.wilddogio.com/blog/comments/67");
-	ref.on("value", function(snapshot) {
+	var ref2 = new Wilddog("https://lintex.wilddogio.com/blog/comments/67");
+	ref2.on("value", function(snapshot) {
 		snapshot.forEach(function(data) {
 			$("#comments").append("<li><b>" + data.val().commName + "</b>：" + data.val().commContent +"<br><i>" + data.val().commDate +"</i></li>");
 		});
