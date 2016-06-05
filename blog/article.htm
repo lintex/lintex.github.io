@@ -38,8 +38,6 @@
 			<div class="postdata"></div>
 		</div>
 			<ul id="comments" name="#comments">
-				<li><b>【匿名用户】</b>：啦啦啦啦啦啦啦啦<br><i>2016年6月2日 14:35</i></li>
-				<li><b>注意</b>：到目前为止还没有人评论这篇文章！<br><i>——无辜的微笑</i></li>
 			</ul>
 			<form method="post" id="commForm" target="_blank">
 				<input type="hidden" id="ID" name="ID" value="<?=$ID?>" />
@@ -63,9 +61,8 @@ google_ad_height = 200;
 src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </script>
 			</div>
-			
 		
-			
+
 		</div>
 		<div style="clear:both;"></div>
 	</div>
@@ -96,6 +93,13 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 	    }else{
 	    	alert(error.code);
 	    }
+	});
+	
+	ref = new Wilddog("https://lintex.wilddogio.com/blog/comments/67");
+	ref.on("value", function(snapshot) {
+		snapshot.forEach(function(data) {
+			$("#comments").append("<li><b>" + data.val().commName + "</b>：" + data.val().commContent +"<br><i>" + data.val().commDate +"</i></li>");
+		});
 	});
 </script>
 
