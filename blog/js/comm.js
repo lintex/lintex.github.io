@@ -19,7 +19,7 @@ $(document).ready(function(){
 	function dd()
 	{
 		var d= new Date();
-		return(d.getYear()+"年"+(d.getMonth()+1) + "月"+d.getDate()+"日 "+d.getHours()+":"+d.getMinutes());
+		return(d.getFullYear()+"年"+(d.getMonth()+1) + "月"+d.getDate()+"日 "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds());
 	}
 
 	$("#commContent").hover(
@@ -58,7 +58,7 @@ $(document).ready(function(){
 		ref.push({
 			commName: "commAuthor",
 			commContent: "content",
-			commDate: new Date()
+			commDate: dd()
 		}, function(err){
 			if (err==null){
 				$("#comments").prepend("<li><b>"+commAuthor+"</b>："+content+"<br><i>"+dd()+"</i></li>");
