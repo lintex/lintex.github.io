@@ -61,12 +61,17 @@ $(document).ready(function(){
 			commDate: new Date()
 		}, function(err){
 			if (err==null){
-				alert('Sorry，出错了！');
-		 		$("#commContent").val(content);
-			}else{
 				$("#comments").prepend("<li><b>"+commAuthor+"</b>："+content+"<br><i>"+dd()+"</i></li>");
 		 		$("#cc").html(parseInt($("#cc").text())+1);
 		 		$("#commContent").val("");
+				ref = new Wilddog("https://lintex.wilddogio.com/blog/posts/" + id + "/comments");
+				ref.once("value", function(data) {
+ 					ref.set(parseInt(data.val())+1);
+				});
+				
+			}else{
+				alert('Sorry，出错了！');
+		 		$("#commContent").val(content);
 			}
 		});
 
