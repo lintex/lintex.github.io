@@ -74,6 +74,7 @@ background: -webkit-gradient(linear, 0 0, 0 100%, from(#9FCE60), to(#6D9D32));co
 .copyright {font-family:"Courier New";line-height:22px;margin:0 auto;width:850px;height:100px;color:#888;margin-top:30px;text-align:center;}
 .copyright a {color:#666;}
 .copyright b {color:#ff0000;font-weight:normal;}
+.site-footer-mark {color:#888;display: block;margin-top: 5px;}
 .none {display:none;}
 
 #returntop{
