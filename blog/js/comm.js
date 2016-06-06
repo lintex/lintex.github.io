@@ -56,8 +56,8 @@ $(document).ready(function(){
 
 		ref = new Wilddog("https://lintex.wilddogio.com/blog/comments/" + id);
 		ref.push({
-			commName: "commAuthor",
-			commContent: "content",
+			commName: commAuthor,
+			commContent: content,
 			commDate: dd()
 		}, function(err){
 			if (err==null){
