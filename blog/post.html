@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8" />
+        <title>发布文章 - 无辜的微笑</title>
+        <style type="text/css">
+			input,textarea {font:10pt/18px verdana,"微软雅黑";}
+        </style>
+        <script src = "https://cdn.wilddog.com/js/client/current/wilddog.js" ></script>
+		<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    </head>
+    <body>
+        <header>
+            <h2>发布文章</h2>
+        </header>
+        <div>
+        	<input type="text" id="title" style="width:450px;height: 25px" /><br />
+        	<input type="radio" name="catID" value="0">未分类
+			<input type="radio" name="catID" value="1">互联网
+			<input type="radio" name="catID" value="2">赚钱
+			<input type="radio" name="catID" value="3">随笔
+			<input type="radio" name="catID" value="4" checked>手机
+			<input type="radio" name="catID" value="5">编程
+			<input type="radio" name="catID" value="6">经验
+			<input type="radio" name="catID" value="7">贝藏<br />
+            <textarea id="content" style="margin-top:5px;width:650px;height: 480px"></textarea><br />
+			<input type="button" id="send" style="width:100px;height: 30px" value="提   交" />
+        </div>
+
+
+        <script type="text/javascript">
+			var ref = new Wilddog("https://lintex.wilddogio.com/blog/posts");
+			ref.orderByKey().startAt("2").endAt("50").on("value", function(snapshot) {
+				snapshot.forEach(function(data) {
+				console.log("key:" + data.key() + "val:" + data.val().title);
+				});
+			});
+
+
+
+        	$(document).ready(function(){
+
+				function dd()
+				{
+					function checkTime(i){
+					if (i<10) 
+					  {i="0" + i;}
+					  return i;
+					}
+					var d= new Date();
+					return(d.getFullYear()+"年"+(d.getMonth()+1) + "月"+d.getDate()+"日 "+checkTime(d.getHours())+":"+checkTime(d.getMinutes())+":"+checkTime(d.getSeconds()));
+				}
+
+				$("#send").click(function(){ 
+					var title = $.trim($("#title").val());
+					var content = $.trim($("#content").val());
+					var cid = $("input:radio:checked").val();
+					console.log("title:" + title + "\ncontent:" + content+ "\ncid:" + cid+ "\npost_date:" + dd());
+				});
+			});
+        </script>
+    </body>
+</html>
