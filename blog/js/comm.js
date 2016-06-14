@@ -18,8 +18,13 @@ $(document).ready(function(){
 
 	function dd()
 	{
+		function checkTime(i){
+		if (i<10) 
+		  {i="0" + i;}
+		  return i;
+		}
 		var d= new Date();
-		return(d.getFullYear()+"年"+(d.getMonth()+1) + "月"+d.getDate()+"日 "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds());
+		return(d.getFullYear()+"年"+(d.getMonth()+1) + "月"+d.getDate()+"日 "+checkTime(d.getHours())+":"+checkTime(d.getMinutes())+":"+checkTime(d.getSeconds()));
 	}
 
 	$("#commContent").hover(

@@ -11,7 +11,9 @@
 <script src = "https://cdn.wilddog.com/js/client/current/wilddog.js" ></script>
 <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script type="text/javascript" src="http://apps.bdimg.com/libs/SyntaxHighlighter/3.0.83/scripts/shCore.min.js"></script>
-<script type="text/javascript" src="http://apps.bdimg.com/libs/SyntaxHighlighter/3.0.83/scripts/shBrushJScript.min.js"></script>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/SyntaxHighlighter/3.0.83/scripts/shAutoloader.min.js"></script>
+<script type="text/javascript" src=""></script>
+
 <script type="text/javascript" src="js/comm.js"></script>
 <!-- Include *at least* the core style and default theme -->
 <link href="http://apps.bdimg.com/libs/SyntaxHighlighter/3.0.83/styles/shCore.min.css" rel="stylesheet" type="text/css" />
@@ -75,8 +77,16 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </div>
 
 <script type="text/javascript">
+	SyntaxHighlighter.autoloader(
+            ['js','jscript','javascript','http://apps.bdimg.com/libs/SyntaxHighlighter/3.0.83/scripts/shBrushJScript.min.js'],
+            ['bash','shell','http://apps.bdimg.com/libs/SyntaxHighlighter/3.0.83/scripts/shBrushBash.min.js'],
+            ['css','http://apps.bdimg.com/libs/SyntaxHighlighter/3.0.83/scripts/shBrushCss.min.js'],
+            ['xml','html','http://apps.bdimg.com/libs/SyntaxHighlighter/3.0.83/scripts/shBrushXml.min.js'],
+            ['sql','http://apps.bdimg.com/libs/SyntaxHighlighter/3.0.83/scripts/shBrushSql.min.js'],
+            ['php','http://apps.bdimg.com/libs/SyntaxHighlighter/3.0.83/scripts/shBrushPhp.min.js']
+        );
 	//程序代码样式格式化
-    SyntaxHighlighter.all()
+    SyntaxHighlighter.all();
 </script>
 
 <script type="text/javascript">
@@ -98,7 +108,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 			$("title").text(d.title + " - 无辜的微笑");
 
 			ref = new Wilddog("https://lintex.wilddogio.com/blog/comments/" + id);
-			ref.once("value", function(snapshot) {
+			ref.limitToLast(20).once("value", function(snapshot) {
 				snapshot.forEach(function(data) {
 					$("#comments").append("<li><b>" + data.val().commName + "</b>：" + data.val().commContent +"<br><i>" + data.val().commDate +"</i></li>");
 				});

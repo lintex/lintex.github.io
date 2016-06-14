@@ -30,9 +30,9 @@
 
         <script type="text/javascript">
 			var ref = new Wilddog("https://lintex.wilddogio.com/blog/posts");
-			ref.orderByKey().startAt("2").endAt("50").on("value", function(snapshot) {
+			ref.orderByKey().startAt("10").endAt("20").on("value", function(snapshot) {
 				snapshot.forEach(function(data) {
-				console.log("key:" + data.key() + "val:" + data.val().title);
+				console.log("key:" + data.key() + " val:" + data.val());
 				});
 			});
 
@@ -40,8 +40,7 @@
 
         	$(document).ready(function(){
 
-				function dd()
-				{
+				function dd(){
 					function checkTime(i){
 					if (i<10) 
 					  {i="0" + i;}
