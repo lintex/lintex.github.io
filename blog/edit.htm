@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8" />
+        <title>修改文章 - 无辜的微笑</title>
+        <style type="text/css">
+			input,textarea {font:10pt/18px verdana,"微软雅黑";}
+        </style>
+        <script src = "https://cdn.wilddog.com/js/client/current/wilddog.js" ></script>
+		<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    </head>
+    <body>
+        <header>
+            <h2>修改文章</h2>
+        </header>
+        <div>
+        	<input type="text" id="title" style="width:450px;height: 25px" /><br />
+        	<input type="radio" name="catID" value="0">未分类
+			<input type="radio" name="catID" value="1">互联网
+			<input type="radio" name="catID" value="2">赚钱
+			<input type="radio" name="catID" value="3">随笔
+			<input type="radio" name="catID" value="4">手机
+			<input type="radio" name="catID" value="5">编程
+			<input type="radio" name="catID" value="6">经验
+			<input type="radio" name="catID" value="7">贝藏<br />
+            <textarea id="content" style="margin-top:5px;width:650px;height: 480px"></textarea><br />
+			<input type="button" id="send" style="width:100px;height: 30px" value="提   交" />
+        </div>
+
+
+        <script type="text/javascript">
+			function getUrlParam(name){
+				var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+				var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+				if (r!=null) return unescape(r[2]); return 1; //返回参数值
+			} 
+			var id = getUrlParam('id');
+
+			var ref = new Wilddog("https://lintex.wilddogio.com/blog/posts/"+id);
+
+			ref.once("value", function(datasnapshot,error) {
+			    if (error == null) {
+			    	var d = datasnapshot.val();
+			    	$("#title").val(d.title);
+			    	$("#content").val(d.content);
+			    	$("input:radio:checked").val(d.catID);
+			    }else{
+			    	alert(error.code);
+			    }
+			});
+
+        	$(document).ready(function(){
+				$("#send").click(function(){ 
+					var title = $.trim($("#title").val());
+					var content = $.trim($("#content").val());
+					//content =HtmlUtil.htmlEncodeByRegExp(content);
+					var cid = $("input:radio:checked").val();
+					console.log("title:" + title + "\ncontent:" + content+ "\ncid:" + cid);
+					
+					ref.update({
+						catID: cid,
+						content: content,
+						title: title
+					});
+
+				});
+			});
+        </script>
+    </body>
+</html>

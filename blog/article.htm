@@ -10,14 +10,13 @@
 <link href="css/main.css" rel="stylesheet" type="text/css" />
 <script src = "https://cdn.wilddog.com/js/client/current/wilddog.js" ></script>
 <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-<script type="text/javascript" src="http://apps.bdimg.com/libs/SyntaxHighlighter/3.0.83/scripts/shCore.min.js"></script>
-<script type="text/javascript" src="http://apps.bdimg.com/libs/SyntaxHighlighter/3.0.83/scripts/shAutoloader.min.js"></script>
-<script type="text/javascript" src=""></script>
+
+<link rel="stylesheet" href="http://apps.bdimg.com/libs/highlight.js/9.1.0/styles/default.min.css">
+<script src="http://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 
 <script type="text/javascript" src="js/comm.js"></script>
-<!-- Include *at least* the core style and default theme -->
-<link href="http://apps.bdimg.com/libs/SyntaxHighlighter/3.0.83/styles/shCore.min.css" rel="stylesheet" type="text/css" />
-<link href="http://apps.bdimg.com/libs/SyntaxHighlighter/3.0.83/styles/shThemeDefault.min.css" rel="stylesheet" type="text/css" />
+
 </head>
 <body>
 <div id="header">
@@ -49,18 +48,8 @@
 			</form>
 		</div>
 		<div id="right">
-			<div id="ad200">
-<script type="text/javascript"><!--
-google_ad_client = "ca-pub-1321211416887104";
-/* 200x200小矩形 */
-google_ad_slot = "2793899413";
-google_ad_width = 200;
-google_ad_height = 200;
-//-->
-</script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-</script>
+			<div id="avatar">
+				
 			</div>
 		
 
@@ -77,19 +66,6 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </div>
 
 <script type="text/javascript">
-	SyntaxHighlighter.autoloader(
-            ['js','jscript','javascript','http://apps.bdimg.com/libs/SyntaxHighlighter/3.0.83/scripts/shBrushJScript.min.js'],
-            ['bash','shell','http://apps.bdimg.com/libs/SyntaxHighlighter/3.0.83/scripts/shBrushBash.min.js'],
-            ['css','http://apps.bdimg.com/libs/SyntaxHighlighter/3.0.83/scripts/shBrushCss.min.js'],
-            ['xml','html','http://apps.bdimg.com/libs/SyntaxHighlighter/3.0.83/scripts/shBrushXml.min.js'],
-            ['sql','http://apps.bdimg.com/libs/SyntaxHighlighter/3.0.83/scripts/shBrushSql.min.js'],
-            ['php','http://apps.bdimg.com/libs/SyntaxHighlighter/3.0.83/scripts/shBrushPhp.min.js']
-        );
-	//程序代码样式格式化
-    SyntaxHighlighter.all();
-</script>
-
-<script type="text/javascript">
 	function getUrlParam(name){
 		var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
 		var r = window.location.search.substr(1).match(reg);  //匹配目标参数
@@ -104,7 +80,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 			ref.child('views').set(parseInt(d.views)+1);
 	    	$(".title").html("<a href=\"http://yangxiaoxi.com/blog/\">"+d.title+"</a>");
 	    	$(".entry").html(d.content);
-	    	$(".postdata").html("发表于"+d.post_date+"，共被点击"+d.views+"次，共有<a href=\"http://\"><span id=\"cc\">"+d.comments+"</span>个评论</a>。<br/>固定链接：http://yangxiaoxi.com/blog/【链接】<br />关键词：【关键词】</div>");
+	    	$(".postdata").html("发表于"+d.post_date+"，共被点击"+d.views+"次，共有<a href=\"http://\"><span id=\"cc\">"+d.comments+"</span>个评论</a>。<br/>固定链接：http://yangxiaoxi.com/blog/article.htm?id="+id+"<br />关键词：【关键词】</div>");
 			$("title").text(d.title + " - 无辜的微笑");
 
 			ref = new Wilddog("https://lintex.wilddogio.com/blog/comments/" + id);
@@ -117,7 +93,6 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 	    	alert(error.code);
 	    }
 	});
-
 </script>
 
 

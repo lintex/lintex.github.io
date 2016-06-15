@@ -1,21 +1,5 @@
 $(document).ready(function(){
 
-	var itme_to_left;
-	var el;
-	$("h1").hover(
-	  function () {
-		el = this; 
-		itme_to_left = setInterval(function(){el.scrollLeft+=5;},10);
-	  },
-	  function () {
-		if (itme_to_left) {
-			clearInterval(itme_to_left);
-			itme_to_left = null;
-		}
-		el.scrollLeft = 0;
-	  }
-	);
-
 	function dd()
 	{
 		function checkTime(i){
