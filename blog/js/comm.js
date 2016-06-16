@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+	hljs.initHighlightingOnLoad();
 	function dd()
 	{
 		function checkTime(i){

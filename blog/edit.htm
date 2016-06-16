@@ -61,6 +61,12 @@
 						catID: cid,
 						content: content,
 						title: title
+					}, function(error){
+  						if (error == null) {
+  							alert("文章修改成功！");
+  						}else{
+			    			alert(error.code);
+			    		}
 					});
 
 				});
