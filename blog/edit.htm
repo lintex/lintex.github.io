@@ -43,7 +43,8 @@
 			    	var d = datasnapshot.val();
 			    	$("#title").val(d.title);
 			    	$("#content").val(d.content);
-			    	$("input:radio:checked").val(d.catID);
+			    	$('input:radio[name="catID"][value='+d.catID+']').prop('checked', true);
+			    	//$("input:radio:checked").val(d.catID);
 			    }else{
 			    	alert(error.code);
 			    }
