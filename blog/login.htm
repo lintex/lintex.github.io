@@ -1,0 +1,60 @@
+<html>
+<head>
+<meta charset="utf-8">
+<script src = "https://cdn.wilddog.com/js/client/current/wilddog.js" ></script>
+</head>
+<body>
+<form id="form_login">
+<label for="username">username</label><input type="text" id="username"><br>
+<label for="password">password</label><input type="password" id="password"><br>
+<input type="button" id="btn_login" value="Log In">
+<input type="button" id="btn_logout" value="Log Out">
+</form>
+
+<div id="state">
+
+</div>
+
+<script type="text/javascript">
+	var ref = new Wilddog("https://lintex.wilddogio.com/");
+	var authData = ref.getAuth();
+	if (authData) {
+		console.log("User " + authData.uid + " is logged in with " + authData.provider);
+	} else {
+		console.log("没有登录");
+	}
+
+	// 创建一个回调来处理终端用户认证的结果
+	function authHandler(error, authData) {
+		if (error) {
+			console.log("Login Failed!", error);
+		} else {
+			console.log("Authenticated successfully with payload:", authData);
+		}
+	}
+
+window.onload = function(){
+	var btnLogin = document.getElementById('btn_login');
+	var btnLogout = document.getElementById('btn_logout');
+
+	btnLogin.onclick = function(){
+		var username = document.getElementById('username').value;
+		var password = document.getElementById('password').value;
+		console.log("username2:", username," password2:",password);
+		ref.authWithPassword({
+			email    : username,
+			password : password
+		}, authHandler);
+	};
+
+	btnLogout.onclick = function(){
+		ref.unauth();
+		console.log("已退出");
+	};
+
+
+}
+
+</script>
+</body>
+</html>

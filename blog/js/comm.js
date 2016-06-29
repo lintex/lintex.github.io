@@ -59,6 +59,7 @@ $(document).ready(function(){
 				
 			}else{
 				alert('Sorry，出错了！');
+				console.log("错误信息：", error);
 		 		$("#commContent").val(content);
 			}
 		});
