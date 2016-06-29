@@ -84,9 +84,14 @@
 
 			ref = new Wilddog("https://lintex.wilddogio.com/blog/comments/" + id);
 			ref.limitToLast(20).once("value", function(snapshot) {
+				var arr = new Array();
 				snapshot.forEach(function(data) {
-					$("#comments").append("<li><b>" + data.val().commName + "</b>：" + data.val().commContent +"<br><i>" + data.val().commDate +"</i></li>");
+					arr.push(data);
 				});
+				arr.reverse();
+				for (var i in arr) {
+					$("#comments").append("<li><b>" + arr[i].val().commName + "</b>：" + arr[i].val().commContent +"<br><i>" + arr[i].val().commDate +"</i></li>");
+				}
 			});
 	    }else{
 	    	alert(error.code);
