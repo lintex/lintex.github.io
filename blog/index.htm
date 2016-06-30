@@ -1,62 +1,130 @@
-<!DOCTYPE html>
-<html lang="zh">
-    <head>
-        <meta charset="utf-8" />
-        <title>发布文章 - 无辜的微笑</title>
-        <style type="text/css">
-			input,textarea {font:10pt/18px verdana,"微软雅黑";}
-        </style>
-        <script src = "https://cdn.wilddog.com/js/client/current/wilddog.js" ></script>
-		<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-    </head>
-    <body>
-        <header>
-            <h2>发布文章</h2>
-        </header>
-        <div>
-        	<input type="text" id="title" style="width:450px;height: 25px" /><br />
-        	<input type="radio" name="catID" value="0">未分类
-			<input type="radio" name="catID" value="1">互联网
-			<input type="radio" name="catID" value="2">赚钱
-			<input type="radio" name="catID" value="3">随笔
-			<input type="radio" name="catID" value="4" checked>手机
-			<input type="radio" name="catID" value="5">编程
-			<input type="radio" name="catID" value="6">经验
-			<input type="radio" name="catID" value="7">贝藏<br />
-            <textarea id="content" style="margin-top:5px;width:650px;height: 480px"></textarea><br />
-			<input type="button" id="send" style="width:100px;height: 30px" value="提   交" />
-        </div>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<head>
+<title>无辜的微笑</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<meta name="keywords" content="无辜的微笑,lintex" />
+<meta name="description" content="无辜的微笑，一个度过晚年的孩子。——lintex's blog" />
+<link rel="alternate" type="application/rss+xml" title="无辜的微笑" href="/rss.xml" />
+<link href="css/main.css" rel="stylesheet" type="text/css" />
+<script src = "https://cdn.wilddog.com/js/client/current/wilddog.js" ></script>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<div id="header">
+	<div id="header_center">
+		<div id="logo"><a href="http://yangxiaoxi.com/blog/">无辜的微笑</a><i>lintex's blog</i></div>
+		<ul style="float:right;">
+			<li><a href="http://yangxiaoxi.com/blog/">首 页</a></li>
+			<li><a href="http://yangxiaoxi.com/blog/article.htm?id=14">关 于</a></li>
+		</ul>
+	</div>
+</div>
+<div id="line"></div>
+
+<div id="box">
+	<div id="box-top"></div>
+	<div id="boxx">
+		<div id="left">
+			
+
+			<div class="page">
+				<span class="prepage">&laquo; 上一页</span>
+				<span class="current">1</span>
+				<a href="2">2</a>
+				<a href="2" class="nextpage">下一页 &raquo;</a>
+				<br /><br />当前共有 111 篇文章，分为 22 页。
+			</div>
+
+		</div><!--left结束-->
+
+		<div id="right">
+			<ul id="category">
+				<li><b>文章分类</b></li>
+				<li><a id="cat5" href="/programming/">程序人生</a></li>
+				<li><a id="cat7" href="/treasure/">日积月累</a></li>
+				<li><a id="cat0" href="/other/">其他分类</a></li>
+				<li><a id="cat1" href="/internet/">互联网络</a></li>
+				<li><a id="cat2" href="/money/">君子之道</a></li>
+				<li><a id="cat3" href="/notes/">心情随笔</a></li>
+				<li><a id="cat4" href="/mobile/">移动设备</a></li>
+				<li><a id="cat6" href="/experience/">经验之谈</a></li>
+			</ul>
+
+			<div id="ad200">
+			<script type="text/javascript"><!--
+google_ad_client = "ca-pub-1321211416887104";
+/* 200x200小矩形 */
+google_ad_slot = "2793899413";
+google_ad_width = 200;
+google_ad_height = 200;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+			</div>
+
+			<div id="tagClouds">
+				<b>标签云</b><br/>
+
+			</div>
+
+			<ul id="newComments">
+				<li><b>最新评论</b></li>
+				<li>【评论内容】<br /><i>关于“<a href="'.$permalink.'">【文章标题】</a>”的评论</i></li>
+			</ul>	
+
+			<div id="ad600">
+			<script type="text/javascript"><!--
+google_ad_client = "ca-pub-1321211416887104";
+/* 宽幅摩天大楼 */
+google_ad_slot = "5828517517";
+google_ad_width = 160;
+google_ad_height = 600;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+			</div>	
+			
+		</div><!--right结束-->
+
+		<div style="clear:both;"></div>
+	</div>
+	<div id="box-bottom"></div>
+</div>
+
+<div class="copyright"><a href="http://blog.yangxiaoxi.com">无辜的微笑</a> &copy; 1984-2012. All rights are not reserved. 鄂ICP备07503124号-1<br /> Not powered by WordPress. Designed by <a href="http://yangxiaoxi.com">l<b>!</b>ntex</a><br /><a href="https://github.com/lintex/lintex.github.io" class="site-footer-mark" title="Hosted with GitHub Pages">
+      <svg aria-hidden="true" class="octicon-mark-github" height="24" version="1.1" viewBox="0 0 16 16" width="24"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59 0.4 0.07 0.55-0.17 0.55-0.38 0-0.19-0.01-0.82-0.01-1.49-2.01 0.37-2.53-0.49-2.69-0.94-0.09-0.23-0.48-0.94-0.82-1.13-0.28-0.15-0.68-0.52-0.01-0.53 0.63-0.01 1.08 0.58 1.23 0.82 0.72 1.21 1.87 0.87 2.33 0.66 0.07-0.52 0.28-0.87 0.51-1.07-1.78-0.2-3.64-0.89-3.64-3.95 0-0.87 0.31-1.59 0.82-2.15-0.08-0.2-0.36-1.02 0.08-2.12 0 0 0.67-0.21 2.2 0.82 0.64-0.18 1.32-0.27 2-0.27 0.68 0 1.36 0.09 2 0.27 1.53-1.04 2.2-0.82 2.2-0.82 0.44 1.1 0.16 1.92 0.08 2.12 0.51 0.56 0.82 1.27 0.82 2.15 0 3.07-1.87 3.75-3.65 3.95 0.29 0.25 0.54 0.73 0.54 1.48 0 1.07-0.01 1.93-0.01 2.2 0 0.21 0.15 0.46 0.55 0.38C13.71 14.53 16 11.53 16 8 16 3.58 12.42 0 8 0z"></path></svg>
+</a></div>
 
 
-        <script type="text/javascript">
-			var ref = new Wilddog("https://lintex.wilddogio.com/blog/posts");
-			ref.orderByKey().endAt("90").limitToLast(5).on("value", function(snapshot) {
-				snapshot.forEach(function(data) {
-					console.log("key:" + data.key() + " val:" + data.val());
-				});
+<script type="text/javascript">
+	var ref = new Wilddog("https://lintex.wilddogio.com/blog/posts");
+		ref.orderByKey()
+		.startAt("10")
+		.endAt("18")
+		.once("value", function(snapshot) {
+			snapshot.forEach(function(data) {
+				var d = data.val();
+				var url = "article.htm?id=" + data.key();
+				console.log("url：",url);
+				$("#left").prepend("<div class=\"post\"><h2 class=\"title\"><a href=\""+url+"\">"+d.title+"</a></h2><div class=\"entry\"><p>"+d.content+"</p><p><a href=\""+url+"\">阅读全文...</a></p></div><div class=\"postdata\">发表于"+d.post_date+"，共被点击"+d.views+"次，共有<a href=\""+url+"#comments\">"+d.comments+"个评论</a></div></div>");
 			});
+		});
+</script>
 
 
 
-        	$(document).ready(function(){
+<a href="javascript:;" id="returnTop" title="回到顶部"></a>
+<div class="none">
+<script>
 
-				function dd(){
-					function checkTime(i){
-					if (i<10) 
-					  {i="0" + i;}
-					  return i;
-					}
-					var d= new Date();
-					return(d.getFullYear()+"年"+(d.getMonth()+1) + "月"+d.getDate()+"日 "+checkTime(d.getHours())+":"+checkTime(d.getMinutes())+":"+checkTime(d.getSeconds()));
-				}
-
-				$("#send").click(function(){ 
-					var title = $.trim($("#title").val());
-					var content = $.trim($("#content").val());
-					var cid = $("input:radio:checked").val();
-					console.log("title:" + title + "\ncontent:" + content+ "\ncid:" + cid+ "\npost_date:" + dd());
-				});
-			});
-        </script>
-    </body>
+</script>
+</div>
+</body>
 </html>

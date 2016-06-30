@@ -20,10 +20,10 @@
 <body>
 <div id="header">
 	<div id="header_center">
-		<div id="logo"><a href="/">无辜的微笑</a><i>lintex's blog</i></div>
+		<div id="logo"><a href="http://yangxiaoxi.com/blog/">无辜的微笑</a><i>lintex's blog</i></div>
 		<ul style="float:right;">
-			<li><a href="/blog">首 页</a></li>
-			<li><a href="/about">关 于</a></li>
+			<li><a href="http://yangxiaoxi.com/blog/">首 页</a></li>
+			<li><a href="http://yangxiaoxi.com/blog/article.htm?id=14">关 于</a></li>
 		</ul>
 	</div>
 </div>
@@ -65,11 +65,7 @@
 </div>
 
 <script type="text/javascript">
-	function getUrlParam(name){
-		var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
-		var r = window.location.search.substr(1).match(reg);  //匹配目标参数
-		if (r!=null) return unescape(r[2]); return 1; //返回参数值
-	} 
+
 	var id = getUrlParam('id');
 
 	var ref = new Wilddog("https://lintex.wilddogio.com/blog/posts/" + id);
@@ -83,15 +79,10 @@
 			$("title").text(d.title + " - 无辜的微笑");
 
 			ref = new Wilddog("https://lintex.wilddogio.com/blog/comments/" + id);
-			ref.limitToLast(20).once("value", function(snapshot) {
-				var arr = new Array();
+			ref.once("value", function(snapshot) {
 				snapshot.forEach(function(data) {
-					arr.push(data);
+					$("#comments").prepend("<li><b>" + data.val().commName + "</b>：" + data.val().commContent +"<br><i>" + data.val().commDate +"</i></li>");
 				});
-				arr.reverse();
-				for (var i in arr) {
-					$("#comments").append("<li><b>" + arr[i].val().commName + "</b>：" + arr[i].val().commContent +"<br><i>" + arr[i].val().commDate +"</i></li>");
-				}
 			});
 	    }else{
 	    	alert(error.code);
@@ -100,40 +91,8 @@
 	hljs.initHighlightingOnLoad();
 </script>
 
+<a href="javascript:;" id="returnTop" title="回到顶部"></a>
 
-
-<div id="returntop"></div>
-<script type="text/javascript">
-var getDiv=document.getElementById('returntop');
-getDiv.onclick=function(){
-	window.scrollTo(0,0);
-}
-window.onscroll=function(){
-	if(document.documentElement.scrollTop){
-		getDiv.style.display="block";
-	}else if(document.body.scrollTop){
-		getDiv.style.display="block";
-	}else{
-		getDiv.style.display="none";	
-	}
-}
-function getWinSize(){
-	var winHeight=window.innerHeight,winWidth=window.innerWidth;
-	if(document.documentElement.clientHeight){
-		winHeight=document.documentElement.clientHeight;
-		winWidth=document.documentElement.clientWidth;
-	}else{
-		winHeight=document.body.clientHeight;
-		winWidth=document.body.clientWidth;
-	}
-    var height=winHeight-90;
-	var width=winWidth-90;
-	getDiv.style.top=height+"px";
-	getDiv.style.left=width+"px";
-}
-getWinSize();
-window.onresize=getWinSize;
-</script>
 <div class="none">
 <script>
 var _hmt = _hmt || [];
