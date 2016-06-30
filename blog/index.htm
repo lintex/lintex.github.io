@@ -35,7 +35,7 @@
 				<span class="current">1</span>
 				<a href="2">2</a>
 				<a href="2" class="nextpage">下一页 &raquo;</a>
-				<br /><br />当前共有 111 篇文章，分为 22 页。
+				<br /><br />当前共有 <span id=articleNum></span> 篇文章，分为 <span id=pageNum></span> 页。
 			</div>
 
 		</div><!--left结束-->
@@ -105,6 +105,12 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 
 <script type="text/javascript">
 	var ref = new Wilddog("https://lintex.wilddogio.com/blog/posts");
+
+	ref.once("value", function(snapshot){
+		$("#articleNum").text(snapshot.numChildren());
+		$("#pageNum").text(Math.ceil(snapshot.numChildren()/9));
+	});
+
 		ref.orderByKey()
 		.startAt("10")
 		.endAt("18")
@@ -116,6 +122,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 				$("#left").prepend("<div class=\"post\"><h2 class=\"title\"><a href=\""+url+"\">"+d.title+"</a></h2><div class=\"entry\"><p>"+d.content+"</p><p><a href=\""+url+"\">阅读全文...</a></p></div><div class=\"postdata\">发表于"+d.post_date+"，共被点击"+d.views+"次，共有<a href=\""+url+"#comments\">"+d.comments+"个评论</a></div></div>");
 			});
 		});
+
 </script>
 
 
