@@ -4,13 +4,14 @@
 <head>
 <title>无辜的微笑</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="shortcut icon" href="../favicon.ico" />
 <meta name="keywords" content="无辜的微笑,lintex" />
 <meta name="description" content="无辜的微笑，一个度过晚年的孩子。——lintex's blog" />
 <link rel="alternate" type="application/rss+xml" title="无辜的微笑" href="/rss.xml" />
 <link href="css/main.css" rel="stylesheet" type="text/css" />
 <script src = "https://cdn.wilddog.com/js/client/current/wilddog.js" ></script>
 <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="js/comm.js"></script>
 </head>
 <body>
 <div id="header">
@@ -73,8 +74,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 			</div>
 
 			<ul id="newComments">
-				<li><b>最新评论</b></li>
-				<li>【评论内容】<br /><i>关于“<a href="'.$permalink.'">【文章标题】</a>”的评论</i></li>
+
 			</ul>	
 
 			<div id="ad600">
@@ -104,7 +104,9 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 
 
 <script type="text/javascript">
-	var ref = new Wilddog("https://lintex.wilddogio.com/blog/posts");
+	var page = getUrlParam('p');
+	console.log('page=',page);
+	var ref = new Wilddog("https://lintex.wilddogio.com/blog2/posts");
 
 	ref.once("value", function(snapshot){
 		$("#articleNum").text(snapshot.numChildren());
@@ -112,8 +114,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 	});
 
 		ref.orderByKey()
-		.startAt("10")
-		.endAt("18")
+		.limitToFirst(10)
 		.once("value", function(snapshot) {
 			snapshot.forEach(function(data) {
 				var d = data.val();
@@ -122,6 +123,15 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 				$("#left").prepend("<div class=\"post\"><h2 class=\"title\"><a href=\""+url+"\">"+d.title+"</a></h2><div class=\"entry\"><p>"+d.content+"</p><p><a href=\""+url+"\">阅读全文...</a></p></div><div class=\"postdata\">发表于"+d.post_date+"，共被点击"+d.views+"次，共有<a href=\""+url+"#comments\">"+d.comments+"个评论</a></div></div>");
 			});
 		});
+
+		ref = new Wilddog("https://lintex.wilddogio.com/blog2/comments");
+		ref.limitToLast(10).once("value", function(snapshot){
+			$("#newComments").append("<li><b>最新评论</b></li>");
+			snapshot.forEach(function(data) {
+				$("#newComments").prepend("<li>"+data.val().commContent+"<br /><i>关于“<a href=\"\">【文章标题】</a>”的评论</i></li>");
+			});
+		});
+
 
 </script>
 

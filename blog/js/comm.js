@@ -42,17 +42,18 @@ $(document).ready(function(){
 		$("#send").attr("disabled",true);
 		$("#commContent").val("发布中......");
 
-		ref = new Wilddog("https://lintex.wilddogio.com/blog/comments/" + id);
+		ref = new Wilddog("https://lintex.wilddogio.com/blog2/comments/");
 		ref.push({
 			commName: commAuthor,
 			commContent: content,
-			commDate: dd()
+			commDate: dd(),
+			postID: id
 		}, function(err){
 			if (err==null){
-				$("#comments").prepend("<li><b>"+commAuthor+"</b>："+content+"<br><i>"+dd()+"</i></li>");
+				//$("#comments").prepend("<li><b>"+commAuthor+"</b>："+content+"<br><i>"+dd()+"</i></li>");
 		 		$("#cc").html(parseInt($("#cc").text())+1);
 		 		$("#commContent").val("");
-				ref = new Wilddog("https://lintex.wilddogio.com/blog/posts/" + id + "/comments");
+				ref = new Wilddog("https://lintex.wilddogio.com/blog2/posts/" + id + "/comments");
 				ref.once("value", function(data) {
  					ref.set(parseInt(data.val())+1);
 				});
@@ -110,5 +111,11 @@ $(document).ready(function(){
 	function getUrlParam(name){
 		var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
 		var r = window.location.search.substr(1).match(reg);  //匹配目标参数
-		if (r!=null) return unescape(r[2]); return fasle; //返回参数值
+		if (r!=null){
+			return unescape(r[2]); //返回参数值
+		}else if(name == "id"){
+			return 14;
+		} else if(name == "p"){
+			return 1;
+		}
 	} 

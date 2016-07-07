@@ -3,7 +3,7 @@
 <head>
 <title>无辜的微笑</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="shortcut icon" href="../favicon.ico" />
 <meta name="keywords" content="【文章关键字】" />
 <meta name="description" content="" />
 <link rel="alternate" type="application/rss+xml" title="无辜的微笑" href="/rss.xml" />
@@ -68,7 +68,7 @@
 
 	var id = getUrlParam('id');
 
-	var ref = new Wilddog("https://lintex.wilddogio.com/blog/posts/" + id);
+	var ref = new Wilddog("https://lintex.wilddogio.com/blog2/posts/" + id);
 	ref.once("value", function(datasnapshot,error) {
 	    if (error == null) {
 	    	var d = datasnapshot.val();
@@ -77,12 +77,13 @@
 	    	$(".entry").html(d.content);
 	    	$(".postdata").html("发表于"+d.post_date+"，共被点击"+d.views+"次，共有<a href=\"http://\"><span id=\"cc\">"+d.comments+"</span>个评论</a>。<br/>固定链接：http://yangxiaoxi.com/blog/article.htm?id="+id+"<br />关键词：【关键词】</div>");
 			$("title").text(d.title + " - 无辜的微笑");
-
-			ref = new Wilddog("https://lintex.wilddogio.com/blog/comments/" + id);
-			ref.once("value", function(snapshot) {
-				snapshot.forEach(function(data) {
-					$("#comments").prepend("<li><b>" + data.val().commName + "</b>：" + data.val().commContent +"<br><i>" + data.val().commDate +"</i></li>");
-				});
+			console.log(id);
+			ref = new Wilddog("https://lintex.wilddogio.com/blog2/comments/");
+			ref.orderByChild("postID")
+			.equalTo(id)
+			//.limitToFirst(10)
+			.on("child_added", function(snapshot) {
+				$("#comments").prepend("<li><b>" + snapshot.val().commName + "</b>：" + snapshot.val().commContent +"<br><i>" + snapshot.val().commDate +"</i></li>");
 			});
 	    }else{
 	    	alert(error.code);
