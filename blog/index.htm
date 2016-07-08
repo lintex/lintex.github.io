@@ -32,10 +32,10 @@
 			
 
 			<div class="page">
-				<span class="prepage">&laquo; 上一页</span>
+				<a href="javascript:;" class="prepage" id="prev">&laquo; 上一页</a>
 				<span class="current">1</span>
 				<a href="2">2</a>
-				<a href="2" class="nextpage">下一页 &raquo;</a>
+				<a href="javascript:;" class="nextpage" id="next">下一页 &raquo;</a>
 				<br /><br />当前共有 <span id=articleNum></span> 篇文章，分为 <span id=pageNum></span> 页。
 			</div>
 
@@ -103,36 +103,130 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </a></div>
 
 
-<script type="text/javascript">
+
+
+<script>
+//---  分页实现代码   ----
+    function Paginator(ref, pageSize) {
+        this.ref = ref;
+        this.pageSize = pageSize;
+        this.currentSet = {};
+        this.firstKey = "";
+        this.lastKey = "";
+    }
+    Paginator.prototype.nextPage = function(callback) {
+        var pg = this;
+        this.ref.orderByKey().endAt(this.firstKey).limitToLast(this.pageSize+1).on('value', function(snapshot) {
+            var toDropKey = pg.firstKey;
+            pg.firstKey = "";
+            pg.lastKey = "";
+            var arr = new Array();
+            snapshot.forEach(function(snap) {
+                if (toDropKey != "") {
+                    if (snap.key() === toDropKey) {
+                        return;
+                    }
+                }
+                if (pg.firstKey == "") pg.firstKey = snap.key();
+                pg.lastKey = snap.key();
+                arr.push(snap);
+            });
+            
+            console.log('first key ', pg.firstKey, ' last key ', pg.lastKey);
+            loaded(arr);
+        });
+    }
+    
+    Paginator.prototype.prevPage = function(callback) {
+        var pg = this;
+        this.ref.orderByKey().startAt(this.lastKey).limitToFirst(this.lastKey ?  this.pageSize+1 : this.pageSize).on('value', function(snapshot) {
+            var toDropKey = pg.lastKey;
+            pg.firstKey = "";
+            pg.lastKey = "";
+            var arr = new Array();
+            snapshot.forEach(function(snap) {
+                //console.log('prev', snap.val().msg);
+                if (toDropKey != "") {
+                    if (snap.key() === toDropKey) {
+                        return;
+                    }
+                }
+                if (pg.firstKey == "") pg.firstKey = snap.key();
+                pg.lastKey = snap.key();
+                arr.push(snap);
+            });
+            
+            console.log('first key ', pg.firstKey, ' last key ', pg.lastKey);
+            loaded(arr);
+        });
+    }
+    function loaded(arr) {
+    	$("#left div").remove(".post");
+
+        for (var i in arr) {
+                var d = arr[i].val();
+                var url = "article.htm?id=" + arr[i].key();
+                console.log("url：",url);
+
+                $("#left").prepend("<div class=\"post\"><h2 class=\"title\"><a href=\""+url+"\">"+d.title+"</a></h2><div class=\"entry\"><p>"+"</p><p><a href=\""+url+"\">阅读全文...</a></p></div><div class=\"postdata\">发表于"+d.post_date+"，共被点击"+d.views+"次，共有<a href=\""+url+"#comments\">"+d.comments+"个评论</a></div></div>");
+        }
+
+
+/*            arr.forEach(function(data) {
+                var d = data.val();
+                var url = "article.htm?id=" + data.key();
+                console.log("url：",url);
+
+                $("#left").prepend("<div class=\"post\"><h2 class=\"title\"><a href=\""+url+"\">"+d.title+"</a></h2><div class=\"entry\"><p>"+"</p><p><a href=\""+url+"\">阅读全文...</a></p></div><div class=\"postdata\">发表于"+d.post_date+"，共被点击"+d.views+"次，共有<a href=\""+url+"#comments\">"+d.comments+"个评论</a></div></div>");
+            });*/
+    }
+
+
+
+    //  ---  以下为应用代码   ----
 	var page = getUrlParam('p');
 	console.log('page=',page);
-	var ref = new Wilddog("https://lintex.wilddogio.com/blog2/posts");
 
+    var ref = new Wilddog('https://lintex.wilddogio.com/blog2/posts');
 	ref.once("value", function(snapshot){
 		$("#articleNum").text(snapshot.numChildren());
-		$("#pageNum").text(Math.ceil(snapshot.numChildren()/9));
+		$("#pageNum").text(Math.ceil(snapshot.numChildren()/10));
 	});
 
-		ref.orderByKey()
-		.limitToLast(10)
-		.once("value", function(snapshot) {
-			snapshot.forEach(function(data) {
-				var d = data.val();
-				var url = "article.htm?id=" + data.key();
-				console.log("url：",url);
-				$("#left").prepend("<div class=\"post\"><h2 class=\"title\"><a href=\""+url+"\">"+d.title+"</a></h2><div class=\"entry\"><p>"+d.content+"</p><p><a href=\""+url+"\">阅读全文...</a></p></div><div class=\"postdata\">发表于"+d.post_date+"，共被点击"+d.views+"次，共有<a href=\""+url+"#comments\">"+d.comments+"个评论</a></div></div>");
-			});
+
+    var paginator = new Paginator(ref, 10);
+
+        paginator.ref.orderByKey()
+        .limitToLast(paginator.pageSize)
+        .on("value", function(snapshot) {
+            paginator.firstKey = "";
+            paginator.lastKey = "";
+            var arr = new Array();
+            snapshot.forEach(function(snap) {
+                if (paginator.firstKey == "") paginator.firstKey = snap.key();
+                paginator.lastKey = snap.key();
+                arr.push(snap);
+            });
+            console.log('first key ', paginator.firstKey, ' last key ', paginator.lastKey);
+            loaded(arr);
+        });
+
+
+    $('#prev').click(function() {
+        paginator.prevPage(loaded);
+    });
+    $('#next').click(function() {
+        paginator.nextPage(loaded);
+    });
+
+
+	ref2 = new Wilddog("https://lintex.wilddogio.com/blog2/comments");
+	ref2.limitToLast(10).once("value", function(snapshot){
+		//$("#newComments").append("");
+		snapshot.forEach(function(data) {
+			$("#newComment").after("<li>"+data.val().commContent+"<br /><i>关于“<a href=\"\">【文章标题】</a>”的评论</i></li>");
 		});
-
-		ref = new Wilddog("https://lintex.wilddogio.com/blog2/comments");
-		ref.limitToLast(10).once("value", function(snapshot){
-			//$("#newComments").append("");
-			snapshot.forEach(function(data) {
-				$("#newComment").after("<li>"+data.val().commContent+"<br /><i>关于“<a href=\"\">【文章标题】</a>”的评论</i></li>");
-			});
-		});
-
-
+	});
 </script>
 
 
